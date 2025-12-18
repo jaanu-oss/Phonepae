@@ -54,33 +54,29 @@ st.markdown('<p class="sub-header">Digital Payment Growth Analysis in India</p>'
 st.sidebar.title("📊 Navigation")
 page = st.sidebar.radio("Choose a page", ["Dashboard", "Year-wise Growth", "State Analysis", "Interactive Map"])
 
-# Load data
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 📊 Data Source")
+st.sidebar.info("**Real PhonePe Pulse Data**\n\nFetched from:\nhttps://github.com/PhonePe/pulse")
+
+# Load data - Always use real PhonePe Pulse data
 @st.cache_data
-def load_data(use_real_data=True):
-    processor = PhonePeDataProcessor(data_dir='data', use_real_data=use_real_data)
+def load_data():
+    processor = PhonePeDataProcessor(data_dir='data', use_real_data=True)
     
-    # Try to load real PhonePe Pulse data
-    if use_real_data:
-        try:
-            processor.load_phonepe_data(use_real=True, years=[2021, 2022, 2023, 2024])
-        except:
-            processor.load_sample_data()
-    else:
+    # Load real PhonePe Pulse data from GitHub
+    try:
+        processor.load_phonepe_data(use_real=True, years=[2021, 2022, 2023, 2024])
+        st.sidebar.success("✅ Using real PhonePe Pulse data")
+    except Exception as e:
+        st.sidebar.error(f"⚠️ Error loading real data: {str(e)}")
+        st.sidebar.warning("Falling back to sample data...")
+        # Only use sample data as last resort fallback
         processor.load_sample_data()
     
     processed_data = processor.process_data()
     return processed_data, processor.raw_data
 
-# Data source selector in sidebar
-st.sidebar.markdown("---")
-data_source = st.sidebar.radio(
-    "Data Source:",
-    ["📊 Real PhonePe Data", "🎲 Sample Data"],
-    index=0,
-    help="Real data is fetched from PhonePe Pulse GitHub repository"
-)
-
-processed_data, raw_data = load_data(use_real_data=(data_source == "📊 Real PhonePe Data"))
+processed_data, raw_data = load_data()
 
 # Dashboard Page
 if page == "Dashboard":
