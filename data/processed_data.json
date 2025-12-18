@@ -1,0 +1,1406 @@
+{
+  "yearly_summary": [
+    {
+      "Year": 2018,
+      "Transactions": 74853817,
+      "Amount": 196779859433
+    },
+    {
+      "Year": 2019,
+      "Transactions": 106113096,
+      "Amount": 289389819037
+    },
+    {
+      "Year": 2020,
+      "Transactions": 121398186,
+      "Amount": 316564504962
+    },
+    {
+      "Year": 2021,
+      "Transactions": 163466904,
+      "Amount": 446854393307
+    },
+    {
+      "Year": 2022,
+      "Transactions": 174299571,
+      "Amount": 566723363665
+    },
+    {
+      "Year": 2023,
+      "Transactions": 166687007,
+      "Amount": 433912530927
+    },
+    {
+      "Year": 2024,
+      "Transactions": 181832437,
+      "Amount": 546841706319
+    }
+  ],
+  "state_summary": [
+    {
+      "State": "Telangana",
+      "Transactions": 52673280,
+      "Amount": 158303831369
+    },
+    {
+      "State": "Tripura",
+      "Transactions": 45627988,
+      "Amount": 105425292711
+    },
+    {
+      "State": "Sikkim",
+      "Transactions": 44830283,
+      "Amount": 134380001671
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Transactions": 44768676,
+      "Amount": 113016295195
+    },
+    {
+      "State": "Jharkhand",
+      "Transactions": 42349631,
+      "Amount": 149275078069
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Transactions": 39807366,
+      "Amount": 81646655695
+    },
+    {
+      "State": "Odisha",
+      "Transactions": 39116586,
+      "Amount": 135590234188
+    },
+    {
+      "State": "Tamil Nadu",
+      "Transactions": 38759694,
+      "Amount": 104783204433
+    },
+    {
+      "State": "Manipur",
+      "Transactions": 36724815,
+      "Amount": 82601655531
+    },
+    {
+      "State": "Rajasthan",
+      "Transactions": 36544692,
+      "Amount": 80142464848
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Transactions": 36067313,
+      "Amount": 119604744774
+    },
+    {
+      "State": "Meghalaya",
+      "Transactions": 35646641,
+      "Amount": 93022212508
+    },
+    {
+      "State": "Chhattisgarh",
+      "Transactions": 34364108,
+      "Amount": 89450521215
+    },
+    {
+      "State": "Karnataka",
+      "Transactions": 33505981,
+      "Amount": 107135848011
+    },
+    {
+      "State": "Bihar",
+      "Transactions": 33408938,
+      "Amount": 106600379459
+    },
+    {
+      "State": "Nagaland",
+      "Transactions": 33126905,
+      "Amount": 100713426154
+    },
+    {
+      "State": "West Bengal",
+      "Transactions": 32160081,
+      "Amount": 72918352858
+    },
+    {
+      "State": "Delhi",
+      "Transactions": 32151414,
+      "Amount": 104756684568
+    },
+    {
+      "State": "Gujarat",
+      "Transactions": 32125167,
+      "Amount": 107956756996
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Transactions": 30185409,
+      "Amount": 100400672040
+    },
+    {
+      "State": "Haryana",
+      "Transactions": 30059576,
+      "Amount": 92302499610
+    },
+    {
+      "State": "Punjab",
+      "Transactions": 29611173,
+      "Amount": 84304249610
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Transactions": 29444157,
+      "Amount": 48005769821
+    },
+    {
+      "State": "Assam",
+      "Transactions": 28987673,
+      "Amount": 91298685716
+    },
+    {
+      "State": "Uttarakhand",
+      "Transactions": 27380466,
+      "Amount": 74174798008
+    },
+    {
+      "State": "Maharashtra",
+      "Transactions": 24765297,
+      "Amount": 74879953948
+    },
+    {
+      "State": "Goa",
+      "Transactions": 24573585,
+      "Amount": 72208776815
+    },
+    {
+      "State": "Kerala",
+      "Transactions": 21666308,
+      "Amount": 55359168338
+    },
+    {
+      "State": "Mizoram",
+      "Transactions": 18217815,
+      "Amount": 56807963491
+    }
+  ],
+  "state_year_data": [
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2018,
+      "Transactions": 4942447,
+      "Amount": 11397282782
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2019,
+      "Transactions": 4375642,
+      "Amount": 11057247334
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2020,
+      "Transactions": 5857472,
+      "Amount": 22270108544
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2021,
+      "Transactions": 3244474,
+      "Amount": 2095930204
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2022,
+      "Transactions": 502460,
+      "Amount": 863226280
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2023,
+      "Transactions": 3981962,
+      "Amount": 11766697710
+    },
+    {
+      "State": "Andhra Pradesh",
+      "Year": 2024,
+      "Transactions": 13162856,
+      "Amount": 60154251920
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2018,
+      "Transactions": 2769995,
+      "Amount": 8465104720
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2019,
+      "Transactions": 4207747,
+      "Amount": 4216162494
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2020,
+      "Transactions": 5148315,
+      "Amount": 6970818510
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2021,
+      "Transactions": 9485381,
+      "Amount": 26132224655
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2022,
+      "Transactions": 5739973,
+      "Amount": 22500694160
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2023,
+      "Transactions": 4631707,
+      "Amount": 2334380328
+    },
+    {
+      "State": "Arunachal Pradesh",
+      "Year": 2024,
+      "Transactions": 12785558,
+      "Amount": 42396910328
+    },
+    {
+      "State": "Assam",
+      "Year": 2018,
+      "Transactions": 2054354,
+      "Amount": 4928395246
+    },
+    {
+      "State": "Assam",
+      "Year": 2019,
+      "Transactions": 2407763,
+      "Amount": 2145316833
+    },
+    {
+      "State": "Assam",
+      "Year": 2020,
+      "Transactions": 3736000,
+      "Amount": 11861800000
+    },
+    {
+      "State": "Assam",
+      "Year": 2021,
+      "Transactions": 4053365,
+      "Amount": 9497034195
+    },
+    {
+      "State": "Assam",
+      "Year": 2022,
+      "Transactions": 4583719,
+      "Amount": 10052095767
+    },
+    {
+      "State": "Assam",
+      "Year": 2023,
+      "Transactions": 10356967,
+      "Amount": 47797402705
+    },
+    {
+      "State": "Assam",
+      "Year": 2024,
+      "Transactions": 1795505,
+      "Amount": 5016640970
+    },
+    {
+      "State": "Bihar",
+      "Year": 2018,
+      "Transactions": 4949115,
+      "Amount": 16069776405
+    },
+    {
+      "State": "Bihar",
+      "Year": 2019,
+      "Transactions": 1983113,
+      "Amount": 6084190684
+    },
+    {
+      "State": "Bihar",
+      "Year": 2020,
+      "Transactions": 5654363,
+      "Amount": 14350773294
+    },
+    {
+      "State": "Bihar",
+      "Year": 2021,
+      "Transactions": 8047096,
+      "Amount": 15040022424
+    },
+    {
+      "State": "Bihar",
+      "Year": 2022,
+      "Transactions": 10503572,
+      "Amount": 47129527564
+    },
+    {
+      "State": "Bihar",
+      "Year": 2023,
+      "Transactions": 1497157,
+      "Amount": 4949601042
+    },
+    {
+      "State": "Bihar",
+      "Year": 2024,
+      "Transactions": 774522,
+      "Amount": 2976488046
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2018,
+      "Transactions": 2752991,
+      "Amount": 5583065748
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2019,
+      "Transactions": 3031320,
+      "Amount": 8421006960
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2020,
+      "Transactions": 7669360,
+      "Amount": 9272256240
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2021,
+      "Transactions": 9065658,
+      "Amount": 26154423330
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2022,
+      "Transactions": 4132097,
+      "Amount": 12334309545
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2023,
+      "Transactions": 1372455,
+      "Amount": 2286510030
+    },
+    {
+      "State": "Chhattisgarh",
+      "Year": 2024,
+      "Transactions": 6340227,
+      "Amount": 25398949362
+    },
+    {
+      "State": "Delhi",
+      "Year": 2018,
+      "Transactions": 1496025,
+      "Amount": 6907147425
+    },
+    {
+      "State": "Delhi",
+      "Year": 2019,
+      "Transactions": 1835256,
+      "Amount": 1536109272
+    },
+    {
+      "State": "Delhi",
+      "Year": 2020,
+      "Transactions": 7478868,
+      "Amount": 23371462500
+    },
+    {
+      "State": "Delhi",
+      "Year": 2021,
+      "Transactions": 399148,
+      "Amount": 442255984
+    },
+    {
+      "State": "Delhi",
+      "Year": 2022,
+      "Transactions": 9740667,
+      "Amount": 33712448487
+    },
+    {
+      "State": "Delhi",
+      "Year": 2023,
+      "Transactions": 1362752,
+      "Amount": 5945686976
+    },
+    {
+      "State": "Delhi",
+      "Year": 2024,
+      "Transactions": 9838698,
+      "Amount": 32841573924
+    },
+    {
+      "State": "Goa",
+      "Year": 2018,
+      "Transactions": 2670406,
+      "Amount": 7837641610
+    },
+    {
+      "State": "Goa",
+      "Year": 2019,
+      "Transactions": 6039257,
+      "Amount": 17839965178
+    },
+    {
+      "State": "Goa",
+      "Year": 2020,
+      "Transactions": 2374800,
+      "Amount": 9368586000
+    },
+    {
+      "State": "Goa",
+      "Year": 2021,
+      "Transactions": 4040906,
+      "Amount": 3079170372
+    },
+    {
+      "State": "Goa",
+      "Year": 2022,
+      "Transactions": 8594713,
+      "Amount": 30657341271
+    },
+    {
+      "State": "Goa",
+      "Year": 2023,
+      "Transactions": 547085,
+      "Amount": 2317452060
+    },
+    {
+      "State": "Goa",
+      "Year": 2024,
+      "Transactions": 306418,
+      "Amount": 1108620324
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2018,
+      "Transactions": 1339911,
+      "Amount": 844143930
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2019,
+      "Transactions": 483386,
+      "Amount": 319518146
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2020,
+      "Transactions": 5489708,
+      "Amount": 25752220228
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2021,
+      "Transactions": 4383115,
+      "Amount": 20679536570
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2022,
+      "Transactions": 1962336,
+      "Amount": 3816743520
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2023,
+      "Transactions": 9878560,
+      "Amount": 37805249120
+    },
+    {
+      "State": "Gujarat",
+      "Year": 2024,
+      "Transactions": 8588151,
+      "Amount": 18739345482
+    },
+    {
+      "State": "Haryana",
+      "Year": 2018,
+      "Transactions": 1017040,
+      "Amount": 990596960
+    },
+    {
+      "State": "Haryana",
+      "Year": 2019,
+      "Transactions": 4673082,
+      "Amount": 20996157426
+    },
+    {
+      "State": "Haryana",
+      "Year": 2020,
+      "Transactions": 2680891,
+      "Amount": 11064037157
+    },
+    {
+      "State": "Haryana",
+      "Year": 2021,
+      "Transactions": 3342225,
+      "Amount": 13024650825
+    },
+    {
+      "State": "Haryana",
+      "Year": 2022,
+      "Transactions": 4840046,
+      "Amount": 18072731764
+    },
+    {
+      "State": "Haryana",
+      "Year": 2023,
+      "Transactions": 4208982,
+      "Amount": 8034946638
+    },
+    {
+      "State": "Haryana",
+      "Year": 2024,
+      "Transactions": 9297310,
+      "Amount": 20119378840
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2018,
+      "Transactions": 2528388,
+      "Amount": 11099623320
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2019,
+      "Transactions": 3962515,
+      "Amount": 14261091485
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2020,
+      "Transactions": 6906020,
+      "Amount": 33929276260
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2021,
+      "Transactions": 6736214,
+      "Amount": 15506764628
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2022,
+      "Transactions": 2858649,
+      "Amount": 2072520525
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2023,
+      "Transactions": 6509427,
+      "Amount": 21311863998
+    },
+    {
+      "State": "Himachal Pradesh",
+      "Year": 2024,
+      "Transactions": 684196,
+      "Amount": 2219531824
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2018,
+      "Transactions": 2516182,
+      "Amount": 4446093594
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2019,
+      "Transactions": 2874479,
+      "Amount": 14297658546
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2020,
+      "Transactions": 7075603,
+      "Amount": 12608724546
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2021,
+      "Transactions": 8922780,
+      "Amount": 31015583280
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2022,
+      "Transactions": 3567742,
+      "Amount": 14042632512
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2023,
+      "Transactions": 6997537,
+      "Amount": 34952697315
+    },
+    {
+      "State": "Jharkhand",
+      "Year": 2024,
+      "Transactions": 10395308,
+      "Amount": 37911688276
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2018,
+      "Transactions": 2334489,
+      "Amount": 2255116374
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2019,
+      "Transactions": 5531888,
+      "Amount": 11533986480
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2020,
+      "Transactions": 355854,
+      "Amount": 706014336
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2021,
+      "Transactions": 8496976,
+      "Amount": 18752826032
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2022,
+      "Transactions": 3694149,
+      "Amount": 13635103959
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2023,
+      "Transactions": 538235,
+      "Amount": 1975322450
+    },
+    {
+      "State": "Karnataka",
+      "Year": 2024,
+      "Transactions": 12554390,
+      "Amount": 58277478380
+    },
+    {
+      "State": "Kerala",
+      "Year": 2018,
+      "Transactions": 2353882,
+      "Amount": 7198171156
+    },
+    {
+      "State": "Kerala",
+      "Year": 2019,
+      "Transactions": 2427932,
+      "Amount": 2134152228
+    },
+    {
+      "State": "Kerala",
+      "Year": 2020,
+      "Transactions": 3556945,
+      "Amount": 8824780545
+    },
+    {
+      "State": "Kerala",
+      "Year": 2021,
+      "Transactions": 4272748,
+      "Amount": 9801683912
+    },
+    {
+      "State": "Kerala",
+      "Year": 2022,
+      "Transactions": 3213821,
+      "Amount": 14677520507
+    },
+    {
+      "State": "Kerala",
+      "Year": 2023,
+      "Transactions": 3311662,
+      "Amount": 4252174008
+    },
+    {
+      "State": "Kerala",
+      "Year": 2024,
+      "Transactions": 2529318,
+      "Amount": 8470685982
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2018,
+      "Transactions": 891743,
+      "Amount": 1501695212
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2019,
+      "Transactions": 3490540,
+      "Amount": 15002340920
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2020,
+      "Transactions": 2101560,
+      "Amount": 4669666320
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2021,
+      "Transactions": 3347627,
+      "Amount": 8134733610
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2022,
+      "Transactions": 6648276,
+      "Amount": 3975669048
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2023,
+      "Transactions": 3786165,
+      "Amount": 9067865175
+    },
+    {
+      "State": "Madhya Pradesh",
+      "Year": 2024,
+      "Transactions": 9178246,
+      "Amount": 5653799536
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2018,
+      "Transactions": 1792743,
+      "Amount": 7658598096
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2019,
+      "Transactions": 6368269,
+      "Amount": 23256918388
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2020,
+      "Transactions": 1595873,
+      "Amount": 2186346010
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2021,
+      "Transactions": 702118,
+      "Amount": 2790216932
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2022,
+      "Transactions": 6133886,
+      "Amount": 30663296114
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2023,
+      "Transactions": 5079400,
+      "Amount": 4068599400
+    },
+    {
+      "State": "Maharashtra",
+      "Year": 2024,
+      "Transactions": 3093008,
+      "Amount": 4255979008
+    },
+    {
+      "State": "Manipur",
+      "Year": 2018,
+      "Transactions": 3485357,
+      "Amount": 2582649537
+    },
+    {
+      "State": "Manipur",
+      "Year": 2019,
+      "Transactions": 6219036,
+      "Amount": 20093705316
+    },
+    {
+      "State": "Manipur",
+      "Year": 2020,
+      "Transactions": 2553881,
+      "Amount": 6009281993
+    },
+    {
+      "State": "Manipur",
+      "Year": 2021,
+      "Transactions": 4378861,
+      "Amount": 18141621123
+    },
+    {
+      "State": "Manipur",
+      "Year": 2022,
+      "Transactions": 6220330,
+      "Amount": 3209690280
+    },
+    {
+      "State": "Manipur",
+      "Year": 2023,
+      "Transactions": 11447812,
+      "Amount": 25356903580
+    },
+    {
+      "State": "Manipur",
+      "Year": 2024,
+      "Transactions": 2419538,
+      "Amount": 7207803702
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2018,
+      "Transactions": 2895513,
+      "Amount": 9624685212
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2019,
+      "Transactions": 4812962,
+      "Amount": 15752824626
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2020,
+      "Transactions": 7574553,
+      "Amount": 13566024423
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2021,
+      "Transactions": 8869048,
+      "Amount": 22607203352
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2022,
+      "Transactions": 4092939,
+      "Amount": 7133992677
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2023,
+      "Transactions": 3846332,
+      "Amount": 16746929528
+    },
+    {
+      "State": "Meghalaya",
+      "Year": 2024,
+      "Transactions": 3555294,
+      "Amount": 7590552690
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2018,
+      "Transactions": 1925665,
+      "Amount": 3587513895
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2019,
+      "Transactions": 768604,
+      "Amount": 2451846760
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2020,
+      "Transactions": 827008,
+      "Amount": 1766489088
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2021,
+      "Transactions": 413812,
+      "Amount": 1899397080
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2022,
+      "Transactions": 7796984,
+      "Amount": 23897755960
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2023,
+      "Transactions": 5397130,
+      "Amount": 19559199120
+    },
+    {
+      "State": "Mizoram",
+      "Year": 2024,
+      "Transactions": 1088612,
+      "Amount": 3645761588
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2018,
+      "Transactions": 1565689,
+      "Amount": 4872424168
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2019,
+      "Transactions": 2888197,
+      "Amount": 5978567790
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2020,
+      "Transactions": 6975395,
+      "Amount": 27601638015
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2021,
+      "Transactions": 1495254,
+      "Amount": 6314457642
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2022,
+      "Transactions": 7812983,
+      "Amount": 12258570327
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2023,
+      "Transactions": 9007892,
+      "Amount": 26942604972
+    },
+    {
+      "State": "Nagaland",
+      "Year": 2024,
+      "Transactions": 3381495,
+      "Amount": 16745163240
+    },
+    {
+      "State": "Odisha",
+      "Year": 2018,
+      "Transactions": 3630409,
+      "Amount": 9246651723
+    },
+    {
+      "State": "Odisha",
+      "Year": 2019,
+      "Transactions": 3527862,
+      "Amount": 9038382444
+    },
+    {
+      "State": "Odisha",
+      "Year": 2020,
+      "Transactions": 2082371,
+      "Amount": 4504168473
+    },
+    {
+      "State": "Odisha",
+      "Year": 2021,
+      "Transactions": 8751892,
+      "Amount": 28977514412
+    },
+    {
+      "State": "Odisha",
+      "Year": 2022,
+      "Transactions": 4918361,
+      "Amount": 24557376473
+    },
+    {
+      "State": "Odisha",
+      "Year": 2023,
+      "Transactions": 11132817,
+      "Amount": 53893967097
+    },
+    {
+      "State": "Odisha",
+      "Year": 2024,
+      "Transactions": 5072874,
+      "Amount": 5372173566
+    },
+    {
+      "State": "Punjab",
+      "Year": 2018,
+      "Transactions": 1407371,
+      "Amount": 4790690884
+    },
+    {
+      "State": "Punjab",
+      "Year": 2019,
+      "Transactions": 3645509,
+      "Amount": 5745322184
+    },
+    {
+      "State": "Punjab",
+      "Year": 2020,
+      "Transactions": 5051540,
+      "Amount": 17983482400
+    },
+    {
+      "State": "Punjab",
+      "Year": 2021,
+      "Transactions": 2857797,
+      "Amount": 4706791659
+    },
+    {
+      "State": "Punjab",
+      "Year": 2022,
+      "Transactions": 6378871,
+      "Amount": 31466970643
+    },
+    {
+      "State": "Punjab",
+      "Year": 2023,
+      "Transactions": 3013835,
+      "Amount": 1971048090
+    },
+    {
+      "State": "Punjab",
+      "Year": 2024,
+      "Transactions": 7256250,
+      "Amount": 17639943750
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2018,
+      "Transactions": 4623669,
+      "Amount": 5867435961
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2019,
+      "Transactions": 3586056,
+      "Amount": 8897004936
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2020,
+      "Transactions": 1558993,
+      "Amount": 3518647201
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2021,
+      "Transactions": 3498076,
+      "Amount": 9889060852
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2022,
+      "Transactions": 9853199,
+      "Amount": 43580699177
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2023,
+      "Transactions": 9966005,
+      "Amount": 6248685135
+    },
+    {
+      "State": "Rajasthan",
+      "Year": 2024,
+      "Transactions": 3458694,
+      "Amount": 2140931586
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2018,
+      "Transactions": 3497723,
+      "Amount": 6918496094
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2019,
+      "Transactions": 5821878,
+      "Amount": 8895829584
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2020,
+      "Transactions": 1461068,
+      "Amount": 6716529596
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2021,
+      "Transactions": 9486092,
+      "Amount": 34813957640
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2022,
+      "Transactions": 9839671,
+      "Amount": 15349886760
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2023,
+      "Transactions": 878627,
+      "Amount": 3120004477
+    },
+    {
+      "State": "Sikkim",
+      "Year": 2024,
+      "Transactions": 13845224,
+      "Amount": 58565297520
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2018,
+      "Transactions": 1670006,
+      "Amount": 8226449556
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2019,
+      "Transactions": 2435439,
+      "Amount": 8701823547
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2020,
+      "Transactions": 3921232,
+      "Amount": 5344639216
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2021,
+      "Transactions": 4413337,
+      "Amount": 9854981521
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2022,
+      "Transactions": 10154073,
+      "Amount": 45601941843
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2023,
+      "Transactions": 12356527,
+      "Amount": 8526003630
+    },
+    {
+      "State": "Tamil Nadu",
+      "Year": 2024,
+      "Transactions": 3809080,
+      "Amount": 18527365120
+    },
+    {
+      "State": "Telangana",
+      "Year": 2018,
+      "Transactions": 4360029,
+      "Amount": 14100333786
+    },
+    {
+      "State": "Telangana",
+      "Year": 2019,
+      "Transactions": 3030194,
+      "Amount": 6045237030
+    },
+    {
+      "State": "Telangana",
+      "Year": 2020,
+      "Transactions": 4135060,
+      "Amount": 7467918360
+    },
+    {
+      "State": "Telangana",
+      "Year": 2021,
+      "Transactions": 8429895,
+      "Amount": 28754371845
+    },
+    {
+      "State": "Telangana",
+      "Year": 2022,
+      "Transactions": 9683858,
+      "Amount": 38212503668
+    },
+    {
+      "State": "Telangana",
+      "Year": 2023,
+      "Transactions": 12395950,
+      "Amount": 42766027500
+    },
+    {
+      "State": "Telangana",
+      "Year": 2024,
+      "Transactions": 10638294,
+      "Amount": 20957439180
+    },
+    {
+      "State": "Tripura",
+      "Year": 2018,
+      "Transactions": 3516664,
+      "Amount": 10068209032
+    },
+    {
+      "State": "Tripura",
+      "Year": 2019,
+      "Transactions": 5001605,
+      "Amount": 6522092920
+    },
+    {
+      "State": "Tripura",
+      "Year": 2020,
+      "Transactions": 257739,
+      "Amount": 514189305
+    },
+    {
+      "State": "Tripura",
+      "Year": 2021,
+      "Transactions": 9385177,
+      "Amount": 10539553771
+    },
+    {
+      "State": "Tripura",
+      "Year": 2022,
+      "Transactions": 8520516,
+      "Amount": 30844267920
+    },
+    {
+      "State": "Tripura",
+      "Year": 2023,
+      "Transactions": 8246622,
+      "Amount": 8856872028
+    },
+    {
+      "State": "Tripura",
+      "Year": 2024,
+      "Transactions": 10699665,
+      "Amount": 38080107735
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2018,
+      "Transactions": 1236074,
+      "Amount": 4875075856
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2019,
+      "Transactions": 3127036,
+      "Amount": 9734463068
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2020,
+      "Transactions": 5388518,
+      "Amount": 5727994634
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2021,
+      "Transactions": 7533161,
+      "Amount": 30207975610
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2022,
+      "Transactions": 1690114,
+      "Amount": 3630364872
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2023,
+      "Transactions": 11089670,
+      "Amount": 16412711600
+    },
+    {
+      "State": "Uttar Pradesh",
+      "Year": 2024,
+      "Transactions": 9742793,
+      "Amount": 11058070055
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2018,
+      "Transactions": 2763046,
+      "Amount": 9361199848
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2019,
+      "Transactions": 2526420,
+      "Amount": 9105217680
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2020,
+      "Transactions": 7236608,
+      "Amount": 8416175104
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2021,
+      "Transactions": 7053940,
+      "Amount": 32173020340
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2022,
+      "Transactions": 4651864,
+      "Amount": 6787069576
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2023,
+      "Transactions": 1872875,
+      "Amount": 2533999875
+    },
+    {
+      "State": "Uttarakhand",
+      "Year": 2024,
+      "Transactions": 1275713,
+      "Amount": 5798115585
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2018,
+      "Transactions": 1866891,
+      "Amount": 5475591303
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2019,
+      "Transactions": 5030109,
+      "Amount": 19325678778
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2020,
+      "Transactions": 4692588,
+      "Amount": 10220456664
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2021,
+      "Transactions": 8360731,
+      "Amount": 5827429507
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2022,
+      "Transactions": 5969702,
+      "Amount": 21986412466
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2023,
+      "Transactions": 1974860,
+      "Amount": 2111125340
+    },
+    {
+      "State": "West Bengal",
+      "Year": 2024,
+      "Transactions": 4265200,
+      "Amount": 7971658800
+    }
+  ]
+}

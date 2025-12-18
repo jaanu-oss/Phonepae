@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_96f3da20294a39e660cb9206f08384a8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    top: 10px; left: 50%; transform: translateX(-50%);
+                    width: 600px; height: 60px; 
+                    background-color: white; border: 2px solid black;
+                    z-index:9999; font-size:20px; font-weight: bold;
+                    text-align: center; padding: 10px">
+        <p>India: State-wise Digital Payment Transactions</p>
+        <p style="font-size:14px;">Choropleth Map Visualization</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_96f3da20294a39e660cb9206f08384a8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_96f3da20294a39e660cb9206f08384a8 = L.map(
+                "map_96f3da20294a39e660cb9206f08384a8",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b9e3891fec71bb6240e26eecfab30b37 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b9e3891fec71bb6240e26eecfab30b37.addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+            var circle_marker_9766544a036aaa7371dbd0459ca2141e = L.circleMarker(
+                [18.1124, 79.0193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35.0, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_3de7da5a2af709c603967a2085cfb47c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d1f6833b799806a927f09610dc2e4169 = $(`<div id="html_d1f6833b799806a927f09610dc2e4169" style="width: 100.0%; height: 100.0%;"><b>Telangana</b><br>Transactions: 52.67M</div>`)[0];
+                popup_3de7da5a2af709c603967a2085cfb47c.setContent(html_d1f6833b799806a927f09610dc2e4169);
+            
+        
+
+        circle_marker_9766544a036aaa7371dbd0459ca2141e.bindPopup(popup_3de7da5a2af709c603967a2085cfb47c)
+        ;
+
+        
+    
+    
+            circle_marker_9766544a036aaa7371dbd0459ca2141e.bindTooltip(
+                `<div>
+                     Telangana: 52.67M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c991afd88ea1cbc0c9afb6f86231900 = L.circleMarker(
+                [23.9408, 91.9882],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.987362852664578, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_3e8af52bbe155cd30c3cef444e2b0f5e = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_25f7693630f7559954b93f409f809ace = $(`<div id="html_25f7693630f7559954b93f409f809ace" style="width: 100.0%; height: 100.0%;"><b>Tripura</b><br>Transactions: 45.63M</div>`)[0];
+                popup_3e8af52bbe155cd30c3cef444e2b0f5e.setContent(html_25f7693630f7559954b93f409f809ace);
+            
+        
+
+        circle_marker_4c991afd88ea1cbc0c9afb6f86231900.bindPopup(popup_3e8af52bbe155cd30c3cef444e2b0f5e)
+        ;
+
+        
+    
+    
+            circle_marker_4c991afd88ea1cbc0c9afb6f86231900.bindTooltip(
+                `<div>
+                     Tripura: 45.63M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_50358aa710ea01f393f9054fdcbc3f9b = L.circleMarker(
+                [27.533, 88.5122],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.5330309788948, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_3fbca4f4e5e802733ba6cbf643000248 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_de3e309f6492ce20fc713c72f51fa6d0 = $(`<div id="html_de3e309f6492ce20fc713c72f51fa6d0" style="width: 100.0%; height: 100.0%;"><b>Sikkim</b><br>Transactions: 44.83M</div>`)[0];
+                popup_3fbca4f4e5e802733ba6cbf643000248.setContent(html_de3e309f6492ce20fc713c72f51fa6d0);
+            
+        
+
+        circle_marker_50358aa710ea01f393f9054fdcbc3f9b.bindPopup(popup_3fbca4f4e5e802733ba6cbf643000248)
+        ;
+
+        
+    
+    
+            circle_marker_50358aa710ea01f393f9054fdcbc3f9b.bindTooltip(
+                `<div>
+                     Sikkim: 44.83M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dcec9a934d837210b3c7bd78aca05ac2 = L.circleMarker(
+                [28.218, 94.7278],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.49794278996865, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_9c788e5d9f062b8606e1b00c5de3cac9 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4c0eb7ac5b76e421940c273b6edc6495 = $(`<div id="html_4c0eb7ac5b76e421940c273b6edc6495" style="width: 100.0%; height: 100.0%;"><b>Arunachal Pradesh</b><br>Transactions: 44.77M</div>`)[0];
+                popup_9c788e5d9f062b8606e1b00c5de3cac9.setContent(html_4c0eb7ac5b76e421940c273b6edc6495);
+            
+        
+
+        circle_marker_dcec9a934d837210b3c7bd78aca05ac2.bindPopup(popup_9c788e5d9f062b8606e1b00c5de3cac9)
+        ;
+
+        
+    
+    
+            circle_marker_dcec9a934d837210b3c7bd78aca05ac2.bindTooltip(
+                `<div>
+                     Arunachal Pradesh: 44.77M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_86cc99d8872747f43f6b826b6d6c2912 = L.circleMarker(
+                [23.6102, 85.2799],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 29.12017876995699, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_96b077837b921d178e8dd5250933c849 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b8f4452f22838367d303598fffc5d573 = $(`<div id="html_b8f4452f22838367d303598fffc5d573" style="width: 100.0%; height: 100.0%;"><b>Jharkhand</b><br>Transactions: 42.35M</div>`)[0];
+                popup_96b077837b921d178e8dd5250933c849.setContent(html_b8f4452f22838367d303598fffc5d573);
+            
+        
+
+        circle_marker_86cc99d8872747f43f6b826b6d6c2912.bindPopup(popup_96b077837b921d178e8dd5250933c849)
+        ;
+
+        
+    
+    
+            circle_marker_86cc99d8872747f43f6b826b6d6c2912.bindTooltip(
+                `<div>
+                     Jharkhand: 42.35M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ecd2b55c68b365814d7d1c21f3a9af0c = L.circleMarker(
+                [26.8467, 80.9462],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.67223495480061, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_b5c6329f49f564d3e943a7ddbed7d1b4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_672b3974e5bc7b3273e280687f666322 = $(`<div id="html_672b3974e5bc7b3273e280687f666322" style="width: 100.0%; height: 100.0%;"><b>Uttar Pradesh</b><br>Transactions: 39.81M</div>`)[0];
+                popup_b5c6329f49f564d3e943a7ddbed7d1b4.setContent(html_672b3974e5bc7b3273e280687f666322);
+            
+        
+
+        circle_marker_ecd2b55c68b365814d7d1c21f3a9af0c.bindPopup(popup_b5c6329f49f564d3e943a7ddbed7d1b4)
+        ;
+
+        
+    
+    
+            circle_marker_ecd2b55c68b365814d7d1c21f3a9af0c.bindTooltip(
+                `<div>
+                     Uttar Pradesh: 39.81M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aaf7adc960274a022047ef06bb94691f = L.circleMarker(
+                [20.9517, 85.0985],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.278802079536344, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_eddd31de3336f6683e97be589b4c7818 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_719c745d98d65385788205b9314b577b = $(`<div id="html_719c745d98d65385788205b9314b577b" style="width: 100.0%; height: 100.0%;"><b>Odisha</b><br>Transactions: 39.12M</div>`)[0];
+                popup_eddd31de3336f6683e97be589b4c7818.setContent(html_719c745d98d65385788205b9314b577b);
+            
+        
+
+        circle_marker_aaf7adc960274a022047ef06bb94691f.bindPopup(popup_eddd31de3336f6683e97be589b4c7818)
+        ;
+
+        
+    
+    
+            circle_marker_aaf7adc960274a022047ef06bb94691f.bindTooltip(
+                `<div>
+                     Odisha: 39.12M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_43d3c1c3bef7bd848240d5c5bd08bf79 = L.circleMarker(
+                [11.1271, 78.6569],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.075534692352555, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_fe573367e93fb92b598423727e37061f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_59a5b04f9f7d9c05c400c7517e0b0c11 = $(`<div id="html_59a5b04f9f7d9c05c400c7517e0b0c11" style="width: 100.0%; height: 100.0%;"><b>Tamil Nadu</b><br>Transactions: 38.76M</div>`)[0];
+                popup_fe573367e93fb92b598423727e37061f.setContent(html_59a5b04f9f7d9c05c400c7517e0b0c11);
+            
+        
+
+        circle_marker_43d3c1c3bef7bd848240d5c5bd08bf79.bindPopup(popup_fe573367e93fb92b598423727e37061f)
+        ;
+
+        
+    
+    
+            circle_marker_43d3c1c3bef7bd848240d5c5bd08bf79.bindTooltip(
+                `<div>
+                     Tamil Nadu: 38.76M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_765ebb84f9f7aacc791f05df5736327e = L.circleMarker(
+                [24.6637, 93.9063],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.916571931727052, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_8b710ae6e095d22086d757dfcd103e85 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_43967c0b1e06bd7e8f0260c999c1cd6c = $(`<div id="html_43967c0b1e06bd7e8f0260c999c1cd6c" style="width: 100.0%; height: 100.0%;"><b>Manipur</b><br>Transactions: 36.72M</div>`)[0];
+                popup_8b710ae6e095d22086d757dfcd103e85.setContent(html_43967c0b1e06bd7e8f0260c999c1cd6c);
+            
+        
+
+        circle_marker_765ebb84f9f7aacc791f05df5736327e.bindPopup(popup_8b710ae6e095d22086d757dfcd103e85)
+        ;
+
+        
+    
+    
+            circle_marker_765ebb84f9f7aacc791f05df5736327e.bindTooltip(
+                `<div>
+                     Manipur: 36.72M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0c39f52d12bb641797c9e595fea4790c = L.circleMarker(
+                [27.0238, 74.2179],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.81398310490632, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_37b76d924fcbcbd781614b81dfcdbcd6 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f5ab2b504e885b49957e19678a218439 = $(`<div id="html_f5ab2b504e885b49957e19678a218439" style="width: 100.0%; height: 100.0%;"><b>Rajasthan</b><br>Transactions: 36.54M</div>`)[0];
+                popup_37b76d924fcbcbd781614b81dfcdbcd6.setContent(html_f5ab2b504e885b49957e19678a218439);
+            
+        
+
+        circle_marker_0c39f52d12bb641797c9e595fea4790c.bindPopup(popup_37b76d924fcbcbd781614b81dfcdbcd6)
+        ;
+
+        
+    
+    
+            circle_marker_0c39f52d12bb641797c9e595fea4790c.bindTooltip(
+                `<div>
+                     Rajasthan: 36.54M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_050098092ede9ad03e7c780e2c52fc30 = L.circleMarker(
+                [15.9129, 79.74],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.54209249927098, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_0f4c66d1c55fe8eb8162722bb00a0268 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_77153d3ae383ccbb5cefddbe7452cc22 = $(`<div id="html_77153d3ae383ccbb5cefddbe7452cc22" style="width: 100.0%; height: 100.0%;"><b>Andhra Pradesh</b><br>Transactions: 36.07M</div>`)[0];
+                popup_0f4c66d1c55fe8eb8162722bb00a0268.setContent(html_77153d3ae383ccbb5cefddbe7452cc22);
+            
+        
+
+        circle_marker_050098092ede9ad03e7c780e2c52fc30.bindPopup(popup_0f4c66d1c55fe8eb8162722bb00a0268)
+        ;
+
+        
+    
+    
+            circle_marker_050098092ede9ad03e7c780e2c52fc30.bindTooltip(
+                `<div>
+                     Andhra Pradesh: 36.07M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3165809ae3e892b1aa8c5b3f95215370 = L.circleMarker(
+                [25.467, 91.3662],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.30249929375957, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_8741e9d1492f3841acf2e45d5026f231 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d2a1df120f3f37efd102b9ad68b52b36 = $(`<div id="html_d2a1df120f3f37efd102b9ad68b52b36" style="width: 100.0%; height: 100.0%;"><b>Meghalaya</b><br>Transactions: 35.65M</div>`)[0];
+                popup_8741e9d1492f3841acf2e45d5026f231.setContent(html_d2a1df120f3f37efd102b9ad68b52b36);
+            
+        
+
+        circle_marker_3165809ae3e892b1aa8c5b3f95215370.bindPopup(popup_8741e9d1492f3841acf2e45d5026f231)
+        ;
+
+        
+    
+    
+            circle_marker_3165809ae3e892b1aa8c5b3f95215370.bindTooltip(
+                `<div>
+                     Meghalaya: 35.65M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eb06763839397b17897dfc71a27a8dab = L.circleMarker(
+                [21.2787, 81.8661],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.572034245826348, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_0b2acfe610a6ebcd782c72b6027a71a1 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ddb62416b2849b53788f39fc1ce4e4bf = $(`<div id="html_ddb62416b2849b53788f39fc1ce4e4bf" style="width: 100.0%; height: 100.0%;"><b>Chhattisgarh</b><br>Transactions: 34.36M</div>`)[0];
+                popup_0b2acfe610a6ebcd782c72b6027a71a1.setContent(html_ddb62416b2849b53788f39fc1ce4e4bf);
+            
+        
+
+        circle_marker_eb06763839397b17897dfc71a27a8dab.bindPopup(popup_0b2acfe610a6ebcd782c72b6027a71a1)
+        ;
+
+        
+    
+    
+            circle_marker_eb06763839397b17897dfc71a27a8dab.bindTooltip(
+                `<div>
+                     Chhattisgarh: 34.36M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cea7528c11cc4063b0dd6ebe9a4e08c1 = L.circleMarker(
+                [15.3173, 75.7139],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.08328909838157, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_71ec90ef1b12039d673bc9a1ea3ed94c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_fbb7f99d7740ac6b79dbee9fa211bd84 = $(`<div id="html_fbb7f99d7740ac6b79dbee9fa211bd84" style="width: 100.0%; height: 100.0%;"><b>Karnataka</b><br>Transactions: 33.51M</div>`)[0];
+                popup_71ec90ef1b12039d673bc9a1ea3ed94c.setContent(html_fbb7f99d7740ac6b79dbee9fa211bd84);
+            
+        
+
+        circle_marker_cea7528c11cc4063b0dd6ebe9a4e08c1.bindPopup(popup_71ec90ef1b12039d673bc9a1ea3ed94c)
+        ;
+
+        
+    
+    
+            circle_marker_cea7528c11cc4063b0dd6ebe9a4e08c1.bindTooltip(
+                `<div>
+                     Karnataka: 33.51M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f59a034419b4ce7a041f66c352427c61 = L.circleMarker(
+                [25.0961, 85.3131],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.02801838047678, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_e07f68925401e0bfbc5a2d3001ac0e40 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_672dae311017f978871575cf036555ed = $(`<div id="html_672dae311017f978871575cf036555ed" style="width: 100.0%; height: 100.0%;"><b>Bihar</b><br>Transactions: 33.41M</div>`)[0];
+                popup_e07f68925401e0bfbc5a2d3001ac0e40.setContent(html_672dae311017f978871575cf036555ed);
+            
+        
+
+        circle_marker_f59a034419b4ce7a041f66c352427c61.bindPopup(popup_e07f68925401e0bfbc5a2d3001ac0e40)
+        ;
+
+        
+    
+    
+            circle_marker_f59a034419b4ce7a041f66c352427c61.bindTooltip(
+                `<div>
+                     Bihar: 33.41M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e365e41f9eaf85a1ca6bfc3c2289a07d = L.circleMarker(
+                [26.1584, 94.5624],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.8673868420573, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_6f415eb3c7a82a5ff09a7f52af2cf565 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a111bb770f08cc9772d9cd3029d2f282 = $(`<div id="html_a111bb770f08cc9772d9cd3029d2f282" style="width: 100.0%; height: 100.0%;"><b>Nagaland</b><br>Transactions: 33.13M</div>`)[0];
+                popup_6f415eb3c7a82a5ff09a7f52af2cf565.setContent(html_a111bb770f08cc9772d9cd3029d2f282);
+            
+        
+
+        circle_marker_e365e41f9eaf85a1ca6bfc3c2289a07d.bindPopup(popup_6f415eb3c7a82a5ff09a7f52af2cf565)
+        ;
+
+        
+    
+    
+            circle_marker_e365e41f9eaf85a1ca6bfc3c2289a07d.bindTooltip(
+                `<div>
+                     Nagaland: 33.13M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_af821a165e66dab9c0cc27a7fc6654f2 = L.circleMarker(
+                [22.9868, 87.855],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.31673345574834, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_218cafa05009530190848d00c8bc9f00 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a09b841d329e14634cbc378487808eda = $(`<div id="html_a09b841d329e14634cbc378487808eda" style="width: 100.0%; height: 100.0%;"><b>West Bengal</b><br>Transactions: 32.16M</div>`)[0];
+                popup_218cafa05009530190848d00c8bc9f00.setContent(html_a09b841d329e14634cbc378487808eda);
+            
+        
+
+        circle_marker_af821a165e66dab9c0cc27a7fc6654f2.bindPopup(popup_218cafa05009530190848d00c8bc9f00)
+        ;
+
+        
+    
+    
+            circle_marker_af821a165e66dab9c0cc27a7fc6654f2.bindTooltip(
+                `<div>
+                     West Bengal: 32.16M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_629acd650b095af9ed01785794343b33 = L.circleMarker(
+                [28.6139, 77.209],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.311797176860832, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_ea5cd7aa70a81c15cb2e2d51be9bef89 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_859194ee6dcafdca06ce4a75e19689b4 = $(`<div id="html_859194ee6dcafdca06ce4a75e19689b4" style="width: 100.0%; height: 100.0%;"><b>Delhi</b><br>Transactions: 32.15M</div>`)[0];
+                popup_ea5cd7aa70a81c15cb2e2d51be9bef89.setContent(html_859194ee6dcafdca06ce4a75e19689b4);
+            
+        
+
+        circle_marker_629acd650b095af9ed01785794343b33.bindPopup(popup_ea5cd7aa70a81c15cb2e2d51be9bef89)
+        ;
+
+        
+    
+    
+            circle_marker_629acd650b095af9ed01785794343b33.bindTooltip(
+                `<div>
+                     Delhi: 32.15M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1131523f15c176a8f0561809f26b8589 = L.circleMarker(
+                [23.0225, 72.5714],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.29684823120945, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_ceb4e96f543a5527db907ba9e2abc6ae = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9da6f47c01c3824d6b6bc0d3c88ebd3a = $(`<div id="html_9da6f47c01c3824d6b6bc0d3c88ebd3a" style="width: 100.0%; height: 100.0%;"><b>Gujarat</b><br>Transactions: 32.13M</div>`)[0];
+                popup_ceb4e96f543a5527db907ba9e2abc6ae.setContent(html_9da6f47c01c3824d6b6bc0d3c88ebd3a);
+            
+        
+
+        circle_marker_1131523f15c176a8f0561809f26b8589.bindPopup(popup_ceb4e96f543a5527db907ba9e2abc6ae)
+        ;
+
+        
+    
+    
+            circle_marker_1131523f15c176a8f0561809f26b8589.bindTooltip(
+                `<div>
+                     Gujarat: 32.13M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3a1cee253de80004361e6d331868ee24 = L.circleMarker(
+                [31.1048, 77.1734],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.192061515819788, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_a8614d0d6bf5ab7864ca3f3c946f83ac = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b8f55a4084b439430888c719ce6032e6 = $(`<div id="html_b8f55a4084b439430888c719ce6032e6" style="width: 100.0%; height: 100.0%;"><b>Himachal Pradesh</b><br>Transactions: 30.19M</div>`)[0];
+                popup_a8614d0d6bf5ab7864ca3f3c946f83ac.setContent(html_b8f55a4084b439430888c719ce6032e6);
+            
+        
+
+        circle_marker_3a1cee253de80004361e6d331868ee24.bindPopup(popup_a8614d0d6bf5ab7864ca3f3c946f83ac)
+        ;
+
+        
+    
+    
+            circle_marker_3a1cee253de80004361e6d331868ee24.bindTooltip(
+                `<div>
+                     Himachal Pradesh: 30.19M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3eebd02b451b93161cd2756a0fb027d6 = L.circleMarker(
+                [29.0588, 76.0856],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.12039348983014, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_8ccd8e18ae34367cf5a24d6b625bc67d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a327dd1032137b87a4b5e97bed4c0875 = $(`<div id="html_a327dd1032137b87a4b5e97bed4c0875" style="width: 100.0%; height: 100.0%;"><b>Haryana</b><br>Transactions: 30.06M</div>`)[0];
+                popup_8ccd8e18ae34367cf5a24d6b625bc67d.setContent(html_a327dd1032137b87a4b5e97bed4c0875);
+            
+        
+
+        circle_marker_3eebd02b451b93161cd2756a0fb027d6.bindPopup(popup_8ccd8e18ae34367cf5a24d6b625bc67d)
+        ;
+
+        
+    
+    
+            circle_marker_3eebd02b451b93161cd2756a0fb027d6.bindTooltip(
+                `<div>
+                     Haryana: 30.06M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_23d479d20af022d57ad7c4fcb8973960 = L.circleMarker(
+                [30.7333, 76.7794],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.86500612834439, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_c6a38360ec38853211d4199a74089fea = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_321f4f5ae8cb8207f5e2d212ec7f9827 = $(`<div id="html_321f4f5ae8cb8207f5e2d212ec7f9827" style="width: 100.0%; height: 100.0%;"><b>Punjab</b><br>Transactions: 29.61M</div>`)[0];
+                popup_c6a38360ec38853211d4199a74089fea.setContent(html_321f4f5ae8cb8207f5e2d212ec7f9827);
+            
+        
+
+        circle_marker_23d479d20af022d57ad7c4fcb8973960.bindPopup(popup_c6a38360ec38853211d4199a74089fea)
+        ;
+
+        
+    
+    
+            circle_marker_23d479d20af022d57ad7c4fcb8973960.bindTooltip(
+                `<div>
+                     Punjab: 29.61M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77c199ceb683322b155e20fafa28d59c = L.circleMarker(
+                [22.9734, 78.6569],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.76988237679522, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_a058b9777a390da845c1ba3020ad2815 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b2eaa0c2cc75345facfc7c0faaa14fca = $(`<div id="html_b2eaa0c2cc75345facfc7c0faaa14fca" style="width: 100.0%; height: 100.0%;"><b>Madhya Pradesh</b><br>Transactions: 29.44M</div>`)[0];
+                popup_a058b9777a390da845c1ba3020ad2815.setContent(html_b2eaa0c2cc75345facfc7c0faaa14fca);
+            
+        
+
+        circle_marker_77c199ceb683322b155e20fafa28d59c.bindPopup(popup_a058b9777a390da845c1ba3020ad2815)
+        ;
+
+        
+    
+    
+            circle_marker_77c199ceb683322b155e20fafa28d59c.bindTooltip(
+                `<div>
+                     Madhya Pradesh: 29.44M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9593b0edb9365d99a201f6feb4438d99 = L.circleMarker(
+                [26.2006, 92.9376],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.509892491980754, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_e55ae96d3a6ed05b8cee9c5b3c80dc21 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_167303e84574b8ad40fee9b6889ba30f = $(`<div id="html_167303e84574b8ad40fee9b6889ba30f" style="width: 100.0%; height: 100.0%;"><b>Assam</b><br>Transactions: 28.99M</div>`)[0];
+                popup_e55ae96d3a6ed05b8cee9c5b3c80dc21.setContent(html_167303e84574b8ad40fee9b6889ba30f);
+            
+        
+
+        circle_marker_9593b0edb9365d99a201f6feb4438d99.bindPopup(popup_e55ae96d3a6ed05b8cee9c5b3c80dc21)
+        ;
+
+        
+    
+    
+            circle_marker_9593b0edb9365d99a201f6feb4438d99.bindTooltip(
+                `<div>
+                     Assam: 28.99M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_779f3fe132d99e0569ead6cbb1c82808 = L.circleMarker(
+                [30.0668, 79.0193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.594509778012686, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_56b4224c33c60095bf4f81af0fb53f35 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f6646823661bc5902ba907ed1d3dbbbc = $(`<div id="html_f6646823661bc5902ba907ed1d3dbbbc" style="width: 100.0%; height: 100.0%;"><b>Uttarakhand</b><br>Transactions: 27.38M</div>`)[0];
+                popup_56b4224c33c60095bf4f81af0fb53f35.setContent(html_f6646823661bc5902ba907ed1d3dbbbc);
+            
+        
+
+        circle_marker_779f3fe132d99e0569ead6cbb1c82808.bindPopup(popup_56b4224c33c60095bf4f81af0fb53f35)
+        ;
+
+        
+    
+    
+            circle_marker_779f3fe132d99e0569ead6cbb1c82808.bindTooltip(
+                `<div>
+                     Uttarakhand: 27.38M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd21d893ba11437a651bf9293a24e41c = L.circleMarker(
+                [19.7515, 75.7139],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.105043581869214, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_3e4eeb4344e39e569c8e4df58f383910 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_57ce7f9947d3349d6b1baac9a7080b23 = $(`<div id="html_57ce7f9947d3349d6b1baac9a7080b23" style="width: 100.0%; height: 100.0%;"><b>Maharashtra</b><br>Transactions: 24.77M</div>`)[0];
+                popup_3e4eeb4344e39e569c8e4df58f383910.setContent(html_57ce7f9947d3349d6b1baac9a7080b23);
+            
+        
+
+        circle_marker_dd21d893ba11437a651bf9293a24e41c.bindPopup(popup_3e4eeb4344e39e569c8e4df58f383910)
+        ;
+
+        
+    
+    
+            circle_marker_dd21d893ba11437a651bf9293a24e41c.bindTooltip(
+                `<div>
+                     Maharashtra: 24.77M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0092cf5e190bd164066546cab96c81e7 = L.circleMarker(
+                [15.2993, 74.124],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.99585425475687, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_4ca7bad7cea41685bdee4624c379e914 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_c0976d7f719e89b90d4e397231608ba5 = $(`<div id="html_c0976d7f719e89b90d4e397231608ba5" style="width: 100.0%; height: 100.0%;"><b>Goa</b><br>Transactions: 24.57M</div>`)[0];
+                popup_4ca7bad7cea41685bdee4624c379e914.setContent(html_c0976d7f719e89b90d4e397231608ba5);
+            
+        
+
+        circle_marker_0092cf5e190bd164066546cab96c81e7.bindPopup(popup_4ca7bad7cea41685bdee4624c379e914)
+        ;
+
+        
+    
+    
+            circle_marker_0092cf5e190bd164066546cab96c81e7.bindTooltip(
+                `<div>
+                     Goa: 24.57M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_360e49ddffe2d28b86f1fcb321e5505c = L.circleMarker(
+                [10.8505, 76.2711],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.34001831668732, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_bc7251949993c136f965a8e883668751 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3e6f8da208bd89eaf5cee2d6224148bf = $(`<div id="html_3e6f8da208bd89eaf5cee2d6224148bf" style="width: 100.0%; height: 100.0%;"><b>Kerala</b><br>Transactions: 21.67M</div>`)[0];
+                popup_bc7251949993c136f965a8e883668751.setContent(html_3e6f8da208bd89eaf5cee2d6224148bf);
+            
+        
+
+        circle_marker_360e49ddffe2d28b86f1fcb321e5505c.bindPopup(popup_bc7251949993c136f965a8e883668751)
+        ;
+
+        
+    
+    
+            circle_marker_360e49ddffe2d28b86f1fcb321e5505c.bindTooltip(
+                `<div>
+                     Kerala: 21.67M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e31a774459ee8bb30e0705f9ca0eadb0 = L.circleMarker(
+                [23.1645, 92.9376],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.375933490376903, "stroke": true, "weight": 1}
+            ).addTo(map_96f3da20294a39e660cb9206f08384a8);
+        
+    
+        var popup_55deef9a50258bd52aaf62051a8bd3c6 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f9d6c4f13625076b7f970663c581c8d4 = $(`<div id="html_f9d6c4f13625076b7f970663c581c8d4" style="width: 100.0%; height: 100.0%;"><b>Mizoram</b><br>Transactions: 18.22M</div>`)[0];
+                popup_55deef9a50258bd52aaf62051a8bd3c6.setContent(html_f9d6c4f13625076b7f970663c581c8d4);
+            
+        
+
+        circle_marker_e31a774459ee8bb30e0705f9ca0eadb0.bindPopup(popup_55deef9a50258bd52aaf62051a8bd3c6)
+        ;
+
+        
+    
+    
+            circle_marker_e31a774459ee8bb30e0705f9ca0eadb0.bindTooltip(
+                `<div>
+                     Mizoram: 18.22M transactions
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
