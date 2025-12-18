@@ -56,13 +56,31 @@ page = st.sidebar.radio("Choose a page", ["Dashboard", "Year-wise Growth", "Stat
 
 # Load data
 @st.cache_data
-def load_data():
-    processor = PhonePeDataProcessor(data_dir='data')
-    processor.load_sample_data()
+def load_data(use_real_data=True):
+    processor = PhonePeDataProcessor(data_dir='data', use_real_data=use_real_data)
+    
+    # Try to load real PhonePe Pulse data
+    if use_real_data:
+        try:
+            processor.load_phonepe_data(use_real=True, years=[2021, 2022, 2023, 2024])
+        except:
+            processor.load_sample_data()
+    else:
+        processor.load_sample_data()
+    
     processed_data = processor.process_data()
     return processed_data, processor.raw_data
 
-processed_data, raw_data = load_data()
+# Data source selector in sidebar
+st.sidebar.markdown("---")
+data_source = st.sidebar.radio(
+    "Data Source:",
+    ["📊 Real PhonePe Data", "🎲 Sample Data"],
+    index=0,
+    help="Real data is fetched from PhonePe Pulse GitHub repository"
+)
+
+processed_data, raw_data = load_data(use_real_data=(data_source == "📊 Real PhonePe Data"))
 
 # Dashboard Page
 if page == "Dashboard":
@@ -264,14 +282,17 @@ elif page == "Interactive Map":
     # Add tabs for Payments and Insurance (like PhonePe Pulse)
     tab1, tab2 = st.tabs(["💳 Payments", "🛡️ Insurance"])
     
-    # Use the same state summary for both (in production, you'd load separate insurance data)
+    # Use the same state summary for both
     state_summary = processed_data['state_summary']
     
-    # Create insurance data (simulated - in production, load from actual insurance data)
-    # For demo, we'll use a percentage of payment data as insurance data
-    insurance_summary = state_summary.copy()
-    insurance_summary['Insurance_Policies'] = (state_summary['Transactions'] * 0.15).astype(int)  # 15% of payments as insurance
-    insurance_summary['Insurance_Value'] = (state_summary['Amount'] * 0.20).astype(int)  # 20% of payment amount as insurance value
+    # Load insurance data (try to get from processor if available)
+    if 'insurance_summary' in processed_data:
+        insurance_summary = processed_data['insurance_summary']
+    else:
+        # Fallback: use percentage of payment data
+        insurance_summary = state_summary.copy()
+        insurance_summary['Insurance_Policies'] = (state_summary['Transactions'] * 0.15).astype(int)
+        insurance_summary['Insurance_Value'] = (state_summary['Amount'] * 0.20).astype(int)
     
     # Generate district data for states
     @st.cache_data
