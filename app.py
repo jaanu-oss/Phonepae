@@ -8,6 +8,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import requests
+import numpy as np
 import sys
 import os
 
@@ -258,10 +259,75 @@ elif page == "State Analysis":
 
 # Interactive Map Page
 elif page == "Interactive Map":
-    st.header("🗺️ India: State-wise Digital Payment Transactions")
-    st.markdown("**Choropleth Map Visualization**")
+    st.header("🗺️ India: State-wise Digital Payments & Insurance")
     
+    # Add tabs for Payments and Insurance (like PhonePe Pulse)
+    tab1, tab2 = st.tabs(["💳 Payments", "🛡️ Insurance"])
+    
+    # Use the same state summary for both (in production, you'd load separate insurance data)
     state_summary = processed_data['state_summary']
+    
+    # Create insurance data (simulated - in production, load from actual insurance data)
+    # For demo, we'll use a percentage of payment data as insurance data
+    insurance_summary = state_summary.copy()
+    insurance_summary['Insurance_Policies'] = (state_summary['Transactions'] * 0.15).astype(int)  # 15% of payments as insurance
+    insurance_summary['Insurance_Value'] = (state_summary['Amount'] * 0.20).astype(int)  # 20% of payment amount as insurance value
+    
+    # Generate district data for states
+    @st.cache_data
+    def generate_district_data(state_summary_df):
+        """Generate sample district-level data for each state"""
+        import numpy as np
+        districts_data = []
+        
+        # Major districts for some key states
+        state_districts = {
+            'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Nashik', 'Aurangabad', 'Solapur', 'Thane', 'Kolhapur'],
+            'Karnataka': ['Bangalore', 'Mysore', 'Hubli', 'Mangalore', 'Belagavi', 'Gulbarga', 'Davangere', 'Shimoga'],
+            'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem', 'Tirunelveli', 'Erode', 'Vellore'],
+            'Uttar Pradesh': ['Lucknow', 'Kanpur', 'Agra', 'Varanasi', 'Meerut', 'Allahabad', 'Ghaziabad', 'Noida'],
+            'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Bhavnagar', 'Jamnagar', 'Gandhinagar', 'Junagadh'],
+            'Rajasthan': ['Jaipur', 'Jodhpur', 'Kota', 'Bikaner', 'Ajmer', 'Udaipur', 'Bhilwara', 'Alwar'],
+            'West Bengal': ['Kolkata', 'Howrah', 'Durgapur', 'Asansol', 'Siliguri', 'Bardhaman', 'Malda', 'Kharagpur'],
+            'Delhi': ['New Delhi', 'Central Delhi', 'North Delhi', 'South Delhi', 'East Delhi', 'West Delhi', 'North East Delhi', 'North West Delhi']
+        }
+        
+        for _, state_row in state_summary_df.iterrows():
+            state = state_row['State']
+            state_trans = state_row['Transactions']
+            state_amount = state_row['Amount']
+            
+            # Get districts for this state or create default ones
+            if state in state_districts:
+                districts = state_districts[state]
+            else:
+                # Create 5-8 default districts for other states
+                districts = [f'{state} District {i+1}' for i in range(np.random.randint(5, 9))]
+            
+            # Distribute state data across districts
+            np.random.seed(hash(state) % 1000)  # Consistent randomness per state
+            district_weights = np.random.dirichlet(np.ones(len(districts)))
+            
+            for i, district in enumerate(districts):
+                district_trans = int(state_trans * district_weights[i])
+                district_amount = int(state_amount * district_weights[i])
+                
+                districts_data.append({
+                    'State': state,
+                    'District': district,
+                    'Transactions': district_trans,
+                    'Amount': district_amount
+                })
+        
+        return pd.DataFrame(districts_data)
+    
+    # Generate district data
+    district_data = generate_district_data(state_summary)
+    
+    # Generate insurance district data
+    insurance_district_data = district_data.copy()
+    insurance_district_data['Insurance_Policies'] = (district_data['Transactions'] * 0.15).astype(int)
+    insurance_district_data['Insurance_Value'] = (district_data['Amount'] * 0.20).astype(int)
     
     # State coordinates for India
     state_coords = {
@@ -296,145 +362,418 @@ elif page == "Interactive Map":
         'Delhi': [28.6139, 77.2090]
     }
     
-    # Prepare data for map
-    map_data = state_summary.copy()
-    map_data['Lat'] = map_data['State'].map(lambda x: state_coords.get(x, [0, 0])[0])
-    map_data['Lon'] = map_data['State'].map(lambda x: state_coords.get(x, [0, 0])[1])
-    
-    # Create PhonePe Pulse style 3D map with vertical bars
-    st.subheader("Interactive 3D Map Visualization")
-    
-    max_trans = map_data['Transactions'].max()
-    min_trans = map_data['Transactions'].min()
-    
-    # Create 3D scatter map with height representing transaction volume
-    fig = go.Figure()
-    
-    # Normalize transaction values for bar height (0 to 1 scale)
-    normalized_trans = (map_data['Transactions'] - min_trans) / (max_trans - min_trans)
-    
-    # Create color mapping (Blue -> Yellow -> Orange -> Red like PhonePe)
-    colors = []
-    for val in normalized_trans:
-        if val < 0.25:
-            colors.append('#4A90E2')  # Light blue
-        elif val < 0.5:
-            colors.append('#F5D76E')  # Yellow
-        elif val < 0.75:
-            colors.append('#F39C12')  # Orange
+    # Helper function to create map visualization
+    def create_phonepae_map(map_df, value_col, amount_col, title, metric_label, colorbar_title):
+        map_data = map_df.copy()
+        map_data['Lat'] = map_data['State'].map(lambda x: state_coords.get(x, [0, 0])[0])
+        map_data['Lon'] = map_data['State'].map(lambda x: state_coords.get(x, [0, 0])[1])
+        
+        max_val = map_data[value_col].max()
+        min_val = map_data[value_col].min()
+        normalized = (map_data[value_col] - min_val) / (max_val - min_val) if max_val > min_val else map_data[value_col] * 0
+        
+        fig = go.Figure()
+        
+        # Format hover text based on data type
+        if 'Insurance' in metric_label:
+            hover_text = map_data['State'] + '<br>Policies: ' + (map_data[value_col]/1e6).round(2).astype(str) + 'M' + \
+                         '<br>Value: ₹' + (map_data[amount_col]/1e9).round(2).astype(str) + 'B'
         else:
-            colors.append('#E74C3C')  # Red
-    
-    # Add 3D bars using scattergeo with size representing height
-    fig.add_trace(go.Scattergeo(
-        lon=map_data['Lon'],
-        lat=map_data['Lat'],
-        text=map_data['State'] + '<br>Transactions: ' + (map_data['Transactions']/1e6).round(2).astype(str) + 'M' +
-             '<br>Amount: ₹' + (map_data['Amount']/1e9).round(2).astype(str) + 'B' +
-             '<br>Volume: ' + (normalized_trans * 100).round(1).astype(str) + '%',
-        mode='markers',
-        marker=dict(
-            size=normalized_trans * 80 + 20,  # Size represents bar height
-            color=map_data['Transactions'],
-            colorscale=[[0, '#4A90E2'], [0.25, '#4A90E2'], [0.25, '#F5D76E'], 
-                       [0.5, '#F5D76E'], [0.5, '#F39C12'], [0.75, '#F39C12'],
-                       [0.75, '#E74C3C'], [1, '#E74C3C']],  # PhonePe color gradient
-            showscale=True,
-            colorbar=dict(
-                title=dict(
-                    text="Transactions<br>(Millions)",
-                    font=dict(size=14, color='#333')
+            hover_text = map_data['State'] + '<br>Transactions: ' + (map_data[value_col]/1e6).round(2).astype(str) + 'M' + \
+                         '<br>Amount: ₹' + (map_data[amount_col]/1e9).round(2).astype(str) + 'B'
+        
+        fig.add_trace(go.Scattergeo(
+            lon=map_data['Lon'],
+            lat=map_data['Lat'],
+            text=hover_text,
+            mode='markers',
+            marker=dict(
+                size=normalized * 80 + 20,
+                color=map_data[value_col],
+                colorscale=[[0, '#4A90E2'], [0.25, '#4A90E2'], [0.25, '#F5D76E'], 
+                           [0.5, '#F5D76E'], [0.5, '#F39C12'], [0.75, '#F39C12'],
+                           [0.75, '#E74C3C'], [1, '#E74C3C']],
+                showscale=True,
+                colorbar=dict(
+                    title=dict(text=colorbar_title, font=dict(size=14, color='#ffffff')),
+                    len=0.7, y=0.5, thickness=25,
+                    tickfont=dict(size=11, color='#ffffff'),
+                    tickformat='.1f'
                 ),
-                len=0.7,
-                y=0.5,
-                thickness=25,
-                tickfont=dict(size=11, color='#666'),
-                tickformat='.1f'
+                line=dict(width=2, color='rgba(255,255,255,0.8)'),
+                opacity=0.85,
+                sizemode='diameter'
             ),
-            line=dict(width=2, color='rgba(255,255,255,0.8)'),
-            opacity=0.85,
-            sizemode='diameter'
-        ),
-        name='States',
-        hovertemplate='<b>%{text}</b><extra></extra>'
-    ))
-    
-    # Configure map with dark purple background like PhonePe
-    fig.update_geos(
-        visible=True,
-        resolution=50,
-        showcountries=True,
-        countrycolor="rgba(255,255,255,0.3)",
-        countrywidth=1.5,
-        showsubunits=True,
-        subunitcolor="rgba(255,255,255,0.2)",
-        subunitwidth=1,
-        showland=True,
-        landcolor="#2C2C54",  # Dark purple
-        showocean=True,
-        oceancolor="#1a1a3e",  # Darker purple
-        showlakes=True,
-        lakecolor="#1a1a3e",
-        center=dict(lat=20.5937, lon=78.9629),
-        projection_type="mercator",
-        projection_scale=4.5,
-        lonaxis_range=[68, 98],
-        lataxis_range=[6, 37],
-        bgcolor='#1a1a3e',  # PhonePe dark purple background
-        coastlinecolor="rgba(255,255,255,0.2)",
-        coastlinewidth=1
-    )
-    
-    fig.update_layout(
-        title={
-            'text': 'India: State-wise Digital Payment Transactions<br><sub>PhonePe Pulse 3D Style Visualization</sub>',
-            'x': 0.5,
-            'xanchor': 'center',
-            'font': {'size': 22, 'color': '#ffffff', 'family': 'Arial, sans-serif'}
-        },
-        height=800,
-        margin=dict(l=0, r=0, t=100, b=0),
-        paper_bgcolor='#1a1a3e',  # Dark purple background
-        plot_bgcolor='#1a1a3e',
-        font=dict(color='#ffffff')
-    )
-    
-    st.plotly_chart(fig, use_container_width=True)
-    
-    # Add summary metrics in PhonePe style
-    col1, col2, col3, col4 = st.columns(4)
-    
-    total_trans = state_summary['Transactions'].sum()
-    total_amount = state_summary['Amount'].sum()
-    avg_trans = total_amount / total_trans
-    
-    with col1:
-        st.metric(
-            "Total Transactions",
-            f"{total_trans/1e9:.2f}B",
-            help="All transactions across India"
+            name='States',
+            hovertemplate='<b>%{text}</b><extra></extra>'
+        ))
+        
+        fig.update_geos(
+            visible=True,
+            resolution=50,
+            showcountries=True,
+            countrycolor="rgba(255,255,255,0.3)",
+            countrywidth=1.5,
+            showsubunits=True,
+            subunitcolor="rgba(255,255,255,0.2)",
+            subunitwidth=1,
+            showland=True,
+            landcolor="#2C2C54",
+            showocean=True,
+            oceancolor="#1a1a3e",
+            showlakes=True,
+            lakecolor="#1a1a3e",
+            center=dict(lat=20.5937, lon=78.9629),
+            projection_type="mercator",
+            projection_scale=4.5,
+            lonaxis_range=[68, 98],
+            lataxis_range=[6, 37],
+            bgcolor='#1a1a3e',
+            coastlinecolor="rgba(255,255,255,0.2)",
+            coastlinewidth=1
         )
-    with col2:
-        st.metric(
-            "Total Payment Value",
-            f"₹{total_amount/1e12:.2f}T",
-            help="Total amount in transactions"
+        
+        fig.update_layout(
+            title={
+                'text': title,
+                'x': 0.5,
+                'xanchor': 'center',
+                'font': {'size': 22, 'color': '#ffffff', 'family': 'Arial, sans-serif'}
+            },
+            height=800,
+            margin=dict(l=0, r=0, t=100, b=0),
+            paper_bgcolor='#1a1a3e',
+            plot_bgcolor='#1a1a3e',
+            font=dict(color='#ffffff')
         )
-    with col3:
-        st.metric(
-            "Avg Transaction Value",
-            f"₹{avg_trans:.2f}",
-            help="Average transaction amount"
-        )
-    with col4:
-        st.metric(
-            "States Covered",
-            f"{len(state_summary)}",
-            help="Number of states/UTs"
-        )
+        
+        return fig
     
-    st.success("✅ 3D Map loaded successfully! Bar height and color represent transaction volume.")
-    st.info("💡 **PhonePe Pulse Style**: Vertical bar height and color intensity represent transaction volume. Blue (low) → Yellow → Orange → Red (high).")
+    # Payments Tab
+    with tab1:
+        st.subheader("💳 Payments - Interactive 3D Map Visualization")
+        
+        # View selector: State or District level
+        view_level = st.radio(
+            "Select View Level:",
+            ["🗺️ All States", "📍 Districts (Select State)"],
+            horizontal=True,
+            key="payments_view"
+        )
+        
+        if view_level == "🗺️ All States":
+            # Create payments map at state level
+            fig_payments = create_phonepae_map(
+                state_summary,
+                'Transactions',
+                'Amount',
+                'India: State-wise Digital Payment Transactions<br><sub>PhonePe Pulse 3D Style - Select Districts view to see district data</sub>',
+                'Transactions',
+                'Transactions<br>(Millions)'
+            )
+            
+            st.plotly_chart(fig_payments, use_container_width=True)
+            
+            # Payments metrics
+            col1, col2, col3, col4 = st.columns(4)
+            total_trans = state_summary['Transactions'].sum()
+            total_amount = state_summary['Amount'].sum()
+            avg_trans = total_amount / total_trans if total_trans > 0 else 0
+            
+            with col1:
+                st.metric("Total Transactions", f"{total_trans/1e9:.2f}B")
+            with col2:
+                st.metric("Total Payment Value", f"₹{total_amount/1e12:.2f}T")
+            with col3:
+                st.metric("Avg Transaction Value", f"₹{avg_trans:.2f}")
+            with col4:
+                st.metric("States Covered", f"{len(state_summary)}")
+            
+            st.info("💡 **All PhonePe transactions** (UPI + Cards + Wallets). Bar height and color represent transaction volume.")
+            
+            # Payments data table
+            st.subheader("Payments Data by State")
+            display_data = state_summary[['State', 'Transactions', 'Amount']].copy()
+            display_data['Transactions (M)'] = (display_data['Transactions'] / 1e6).round(2)
+            display_data['Amount (B)'] = (display_data['Amount'] / 1e9).round(2)
+            display_data = display_data[['State', 'Transactions (M)', 'Amount (B)']]
+            st.dataframe(display_data, use_container_width=True, height=400)
+        else:
+            # District level view
+            selected_state = st.selectbox(
+                "Select a State to view Districts:",
+                sorted(state_summary['State'].tolist()),
+                key="payments_state_selector"
+            )
+            
+            # Filter district data for selected state
+            state_districts = district_data[district_data['State'] == selected_state].copy()
+            
+            if not state_districts.empty:
+                # Get approximate district coordinates (centered around state with some variation)
+                state_lat, state_lon = state_coords.get(selected_state, [20.5937, 78.9629])
+                np.random.seed(hash(selected_state) % 1000)
+                
+                # Add district coordinates with variation
+                state_districts['Lat'] = state_lat + np.random.uniform(-1.5, 1.5, len(state_districts))
+                state_districts['Lon'] = state_lon + np.random.uniform(-1.5, 1.5, len(state_districts))
+                
+                # Create district map
+                max_val = state_districts['Transactions'].max()
+                min_val = state_districts['Transactions'].min()
+                normalized = (state_districts['Transactions'] - min_val) / (max_val - min_val) if max_val > min_val else state_districts['Transactions'] * 0
+                
+                fig_districts = go.Figure()
+                
+                hover_text_payments = state_districts['District'] + '<br>Transactions: ' + (state_districts['Transactions']/1e6).round(2).astype(str) + 'M' + \
+                                     '<br>Amount: ₹' + (state_districts['Amount']/1e9).round(2).astype(str) + 'B'
+                
+                fig_districts.add_trace(go.Scattergeo(
+                    lon=state_districts['Lon'],
+                    lat=state_districts['Lat'],
+                    text=state_districts['District'],
+                    mode='markers+text',
+                    marker=dict(
+                        size=normalized * 60 + 25,
+                        color=state_districts['Transactions'],
+                        colorscale=[[0, '#4A90E2'], [0.25, '#4A90E2'], [0.25, '#F5D76E'], 
+                                   [0.5, '#F5D76E'], [0.5, '#F39C12'], [0.75, '#F39C12'],
+                                   [0.75, '#E74C3C'], [1, '#E74C3C']],
+                        showscale=True,
+                        colorbar=dict(
+                            title=dict(text='Transactions<br>(Millions)', font=dict(size=14, color='#ffffff')),
+                            len=0.7, y=0.5, thickness=25,
+                            tickfont=dict(size=11, color='#ffffff'),
+                            tickformat='.1f'
+                        ),
+                        line=dict(width=2, color='rgba(255,255,255,0.8)'),
+                        opacity=0.9,
+                        sizemode='diameter'
+                    ),
+                    textfont=dict(size=10, color='white', family='Arial, sans-serif', weight='bold'),
+                    name='Districts',
+                    customdata=hover_text_payments,
+                    hovertemplate='<b>%{customdata}</b><extra></extra>'
+                ))
+                
+                # Configure map centered on selected state
+                fig_districts.update_geos(
+                    visible=True,
+                    resolution=50,
+                    showcountries=True,
+                    countrycolor="rgba(255,255,255,0.3)",
+                    countrywidth=1.5,
+                    showsubunits=True,
+                    subunitcolor="rgba(255,255,255,0.2)",
+                    subunitwidth=1,
+                    showland=True,
+                    landcolor="#2C2C54",
+                    showocean=True,
+                    oceancolor="#1a1a3e",
+                    center=dict(lat=state_lat, lon=state_lon),
+                    projection_type="mercator",
+                    projection_scale=8,  # Zoom in more for districts
+                    lonaxis_range=[state_lon-3, state_lon+3],
+                    lataxis_range=[state_lat-3, state_lat+3],
+                    bgcolor='#1a1a3e',
+                    coastlinecolor="rgba(255,255,255,0.2)",
+                    coastlinewidth=1
+                )
+                
+                fig_districts.update_layout(
+                    title={
+                        'text': f'{selected_state}: District-wise Payment Transactions<br><sub>PhonePe Pulse 3D Style</sub>',
+                        'x': 0.5,
+                        'xanchor': 'center',
+                        'font': {'size': 22, 'color': '#ffffff', 'family': 'Arial, sans-serif'}
+                    },
+                    height=700,
+                    margin=dict(l=0, r=0, t=100, b=0),
+                    paper_bgcolor='#1a1a3e',
+                    plot_bgcolor='#1a1a3e',
+                    font=dict(color='#ffffff')
+                )
+                
+                st.plotly_chart(fig_districts, use_container_width=True)
+                
+                # District metrics
+                col1, col2, col3 = st.columns(3)
+                state_total_trans = state_districts['Transactions'].sum()
+                state_total_amount = state_districts['Amount'].sum()
+                
+                with col1:
+                    st.metric("Total Districts", f"{len(state_districts)}")
+                with col2:
+                    st.metric("State Total Transactions", f"{state_total_trans/1e6:.2f}M")
+                with col3:
+                    st.metric("State Total Amount", f"₹{state_total_amount/1e9:.2f}B")
+                
+                # District data table
+                st.subheader(f"District-wise Data for {selected_state}")
+                dist_display = state_districts[['District', 'Transactions', 'Amount']].copy()
+                dist_display['Transactions (M)'] = (dist_display['Transactions'] / 1e6).round(2)
+                dist_display['Amount (B)'] = (dist_display['Amount'] / 1e9).round(2)
+                dist_display = dist_display[['District', 'Transactions (M)', 'Amount (B)']].sort_values('Transactions (M)', ascending=False)
+                st.dataframe(dist_display, use_container_width=True, height=300)
+            else:
+                st.warning(f"No district data available for {selected_state}")
+    
+    # Insurance Tab
+    with tab2:
+        st.subheader("🛡️ Insurance - Interactive 3D Map Visualization")
+        
+        # View selector: State or District level
+        view_level_ins = st.radio(
+            "Select View Level:",
+            ["🗺️ All States", "📍 Districts (Select State)"],
+            horizontal=True,
+            key="insurance_view"
+        )
+        
+        if view_level_ins == "🗺️ All States":
+            # Create insurance map at state level
+            fig_insurance = create_phonepae_map(
+                insurance_summary,
+                'Insurance_Policies',
+                'Insurance_Value',
+                'India: State-wise Insurance Policies<br><sub>PhonePe Pulse 3D Style - Click to view districts</sub>',
+                'Insurance_Policies',
+                'Policies<br>(Millions)'
+            )
+            
+            st.plotly_chart(fig_insurance, use_container_width=True)
+        else:
+            # District level view for insurance
+            selected_state_ins = st.selectbox(
+                "Select a State to view Districts:",
+                sorted(insurance_summary['State'].tolist()),
+                key="insurance_state_selector"
+            )
+            
+            # Filter insurance district data for selected state
+            state_ins_districts = insurance_district_data[insurance_district_data['State'] == selected_state_ins].copy()
+            
+            if not state_ins_districts.empty:
+                # Get approximate district coordinates
+                state_lat, state_lon = state_coords.get(selected_state_ins, [20.5937, 78.9629])
+                np.random.seed(hash(selected_state_ins) % 1000)
+                
+                # Add district coordinates with variation
+                state_ins_districts['Lat'] = state_lat + np.random.uniform(-1.5, 1.5, len(state_ins_districts))
+                state_ins_districts['Lon'] = state_lon + np.random.uniform(-1.5, 1.5, len(state_ins_districts))
+                
+                # Create district map for insurance
+                max_val = state_ins_districts['Insurance_Policies'].max()
+                min_val = state_ins_districts['Insurance_Policies'].min()
+                normalized = (state_ins_districts['Insurance_Policies'] - min_val) / (max_val - min_val) if max_val > min_val else state_ins_districts['Insurance_Policies'] * 0
+                
+                fig_ins_districts = go.Figure()
+                
+                hover_text_ins = state_ins_districts['District'] + '<br>Policies: ' + (state_ins_districts['Insurance_Policies']/1e6).round(2).astype(str) + 'M' + \
+                                 '<br>Value: ₹' + (state_ins_districts['Insurance_Value']/1e9).round(2).astype(str) + 'B'
+                
+                fig_ins_districts.add_trace(go.Scattergeo(
+                    lon=state_ins_districts['Lon'],
+                    lat=state_ins_districts['Lat'],
+                    text=state_ins_districts['District'],
+                    mode='markers+text',
+                    marker=dict(
+                        size=normalized * 60 + 25,
+                        color=state_ins_districts['Insurance_Policies'],
+                        colorscale=[[0, '#4A90E2'], [0.25, '#4A90E2'], [0.25, '#F5D76E'], 
+                                   [0.5, '#F5D76E'], [0.5, '#F39C12'], [0.75, '#F39C12'],
+                                   [0.75, '#E74C3C'], [1, '#E74C3C']],
+                        showscale=True,
+                        colorbar=dict(
+                            title=dict(text='Policies<br>(Millions)', font=dict(size=14, color='#ffffff')),
+                            len=0.7, y=0.5, thickness=25,
+                            tickfont=dict(size=11, color='#ffffff'),
+                            tickformat='.1f'
+                        ),
+                        line=dict(width=2, color='rgba(255,255,255,0.8)'),
+                        opacity=0.9,
+                        sizemode='diameter'
+                    ),
+                    textfont=dict(size=10, color='white', family='Arial, sans-serif', weight='bold'),
+                    name='Districts',
+                    customdata=hover_text_ins,
+                    hovertemplate='<b>%{customdata}</b><extra></extra>'
+                ))
+                
+                # Configure map centered on selected state
+                fig_ins_districts.update_geos(
+                    visible=True,
+                    resolution=50,
+                    showcountries=True,
+                    countrycolor="rgba(255,255,255,0.3)",
+                    countrywidth=1.5,
+                    showsubunits=True,
+                    subunitcolor="rgba(255,255,255,0.2)",
+                    subunitwidth=1,
+                    showland=True,
+                    landcolor="#2C2C54",
+                    showocean=True,
+                    oceancolor="#1a1a3e",
+                    center=dict(lat=state_lat, lon=state_lon),
+                    projection_type="mercator",
+                    projection_scale=8,
+                    lonaxis_range=[state_lon-3, state_lon+3],
+                    lataxis_range=[state_lat-3, state_lat+3],
+                    bgcolor='#1a1a3e',
+                    coastlinecolor="rgba(255,255,255,0.2)",
+                    coastlinewidth=1
+                )
+                
+                fig_ins_districts.update_layout(
+                    title={
+                        'text': f'{selected_state_ins}: District-wise Insurance Policies<br><sub>PhonePe Pulse 3D Style</sub>',
+                        'x': 0.5,
+                        'xanchor': 'center',
+                        'font': {'size': 22, 'color': '#ffffff', 'family': 'Arial, sans-serif'}
+                    },
+                    height=700,
+                    margin=dict(l=0, r=0, t=100, b=0),
+                    paper_bgcolor='#1a1a3e',
+                    plot_bgcolor='#1a1a3e',
+                    font=dict(color='#ffffff')
+                )
+                
+                st.plotly_chart(fig_ins_districts, use_container_width=True)
+                
+                # Insurance district data table
+                st.subheader(f"District-wise Insurance Data for {selected_state_ins}")
+                ins_dist_display = state_ins_districts[['District', 'Insurance_Policies', 'Insurance_Value']].copy()
+                ins_dist_display['Policies (M)'] = (ins_dist_display['Insurance_Policies'] / 1e6).round(2)
+                ins_dist_display['Value (B)'] = (ins_dist_display['Insurance_Value'] / 1e9).round(2)
+                ins_dist_display = ins_dist_display[['District', 'Policies (M)', 'Value (B)']].sort_values('Policies (M)', ascending=False)
+                st.dataframe(ins_dist_display, use_container_width=True, height=300)
+            else:
+                st.warning(f"No district data available for {selected_state_ins}")
+        
+        # Insurance metrics
+        col1, col2, col3, col4 = st.columns(4)
+        total_policies = insurance_summary['Insurance_Policies'].sum()
+        total_ins_value = insurance_summary['Insurance_Value'].sum()
+        avg_policy_value = total_ins_value / total_policies if total_policies > 0 else 0
+        
+        with col1:
+            st.metric("Total Policies", f"{total_policies/1e6:.2f}M")
+        with col2:
+            st.metric("Total Insurance Value", f"₹{total_ins_value/1e12:.2f}T")
+        with col3:
+            st.metric("Avg Policy Value", f"₹{avg_policy_value/1000:.2f}K")
+        with col4:
+            st.metric("States Covered", f"{len(insurance_summary)}")
+        
+        st.info("💡 **Insurance policies** sold through PhonePe. Bar height and color represent number of policies.")
+        
+        # Insurance data table
+        st.subheader("Insurance Data by State")
+        ins_display = insurance_summary[['State', 'Insurance_Policies', 'Insurance_Value']].copy()
+        ins_display['Policies (M)'] = (ins_display['Insurance_Policies'] / 1e6).round(2)
+        ins_display['Value (B)'] = (ins_display['Insurance_Value'] / 1e9).round(2)
+        ins_display = ins_display[['State', 'Policies (M)', 'Value (B)']]
+        st.dataframe(ins_display, use_container_width=True, height=400)
     
     # Add data table below map
     st.subheader("State-wise Data Table")
