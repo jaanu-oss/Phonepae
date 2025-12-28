@@ -1,0 +1,9 @@
+# MySQL Database Configuration
+# Copy this file to .env and update with your actual credentials
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password_here
+DB_NAME=phonepe_pulse
+DB_PORT=3306
+
