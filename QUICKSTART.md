@@ -67,12 +67,76 @@ Dashboard opens at: `http://localhost:8501`
 streamlit run dashboard/app.py --server.port 8502
 ```
 
+## Viewing Stored Data
+
+### Option 1: Using Python Script (Recommended)
+Use the `view_data.py` script to view your data:
+
+```bash
+# Show summary of all tables
+python view_data.py
+
+# View specific table
+python view_data.py --table aggregated_transactions
+
+# View more records
+python view_data.py --table aggregated_transactions --limit 50
+
+# View all tables with sample data
+python view_data.py --all
+
+# Run custom SQL query
+python view_data.py --query "SELECT * FROM aggregated_transactions WHERE year=2023 LIMIT 10"
+```
+
+### Option 2: Using MySQL Command Line
+Connect to MySQL and query directly:
+
+```bash
+mysql -u root -p phonepe_pulse
+```
+
+Then run SQL queries:
+```sql
+-- Show all tables
+SHOW TABLES;
+
+-- View data from a table
+SELECT * FROM aggregated_transactions LIMIT 10;
+
+-- Count records in each table
+SELECT COUNT(*) FROM aggregated_transactions;
+SELECT COUNT(*) FROM aggregated_users;
+SELECT COUNT(*) FROM map_transactions;
+SELECT COUNT(*) FROM map_users;
+SELECT COUNT(*) FROM top_transactions;
+SELECT COUNT(*) FROM top_users;
+
+-- Sample queries
+SELECT state, year, SUM(transaction_amount) as total 
+FROM aggregated_transactions 
+GROUP BY state, year 
+ORDER BY total DESC 
+LIMIT 10;
+```
+
+### Option 3: Using MySQL Workbench or phpMyAdmin
+- Connect using your credentials from `.env`
+- Browse tables and run queries visually
+
+### Option 4: Using Streamlit Dashboard
+The dashboard provides interactive visualization:
+```bash
+streamlit run dashboard/app.py
+```
+
 ## Next Steps
 
-1. Explore the dashboard filters
-2. Check out all 10+ insights
-3. Analyze year-wise and quarter-wise trends
-4. Review top states and districts
+1. View your data using `python view_data.py`
+2. Explore the dashboard filters
+3. Check out all 10+ insights
+4. Analyze year-wise and quarter-wise trends
+5. Review top states and districts
 
 Happy Analyzing! 📊
 
